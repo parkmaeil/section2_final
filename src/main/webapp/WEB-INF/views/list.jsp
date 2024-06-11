@@ -13,14 +13,6 @@ pageEncoding="UTF-8"%>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-     function goDel(num){
-         location.href="/MF01/delete.do?num="+num; //   /MF01/delete?num=1
-     }
-     function goRegister(){
-        location.href="/MF01/registerGet.do";
-     }
-  </script>
 </head>
 <body>
 
@@ -37,23 +29,20 @@ pageEncoding="UTF-8"%>
                      <th>가격</th>
                      <th>저자</th>
                      <th>페이지수</th>
-                     <th>삭제</th>
                   </tr>
               </thead>
               <tbody>
               <c:forEach var="book" items="${list}">
                                   <tr>
                                        <td>${book.num}</td>
-                                       <td><a href="/MF01/view.do?num=${book.num}">${book.title}</a></td>
+                                       <td>${book.title}</a></td>
                                        <td>${book.price}</td>
                                        <td>${book.author}</td>
                                        <td>${book.page}</td>
-                                       <td><button class="btn btn-sm btn-warning" onclick="goDel(${book.num})">삭제</button></td>
                                     </tr>
               </c:forEach>
               </tbody>
           </table>
-          <button class="btn btn-sm btn-primary"  onclick="goRegister()">등록하기</button>
         </div>
         <div class="card-footer">인프런_마프 1탄_박매일</div>
       </div>

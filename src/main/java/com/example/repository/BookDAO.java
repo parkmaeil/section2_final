@@ -1,12 +1,10 @@
 package com.example.repository;
-// JDBC->MyBatis(MVC)->Spring+MyBatis->Spring Data JPA(Hibernate)
+
 import com.example.entity.BookDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-// JDBC ->  1. 생산성이 떨어진다(시간이 많이 소요된다), 2. Java코드+SQL : 믹서구현(유지보수가 어렵다)->
-//  MyBatis : SQL Mapping Framework for Java
 public class BookDAO {
     private Connection conn;
     private PreparedStatement ps;
