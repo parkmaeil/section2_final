@@ -1,14 +1,14 @@
 ## 1. 실습환경
-- IntelliJ IDEA Community Edition
+(1) IntelliJ IDEA Community Edition
 - 다운로드 : https://www.jetbrains.com/ko-kr/idea/download/?section=windows
 
-- MySQL8 DataBase
+(2) MySQL8 DataBase
 - 다운로드 : https://dev.mysql.com/downloads/mysql/
 
-- Tomcat 9(WAS)
+(3) Tomcat 9(WAS)
 - 다운로드 : https://tomcat.apache.org/download-90.cgi
 
-- API Search Repository
+(4) API Search Repository
 - https://mvnrepository.com/
 
 ## 2. 실습내용
