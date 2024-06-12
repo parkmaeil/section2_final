@@ -1,5 +1,5 @@
 package com.example.repository;
-
+// JDBC -> MyBatis(Java<-->SQL) ->Hibernate(ORM) + SQL(X) ->Spring Data JPA(O)
 import com.example.entity.BookDTO;
 
 import java.sql.*;
@@ -53,5 +53,25 @@ public class BookDAO {
              }
          }
          return list;
+    }
+    public int bookRemove(int num){
+        int cnt=-1; // 실패의미=>1
+        conn=getConnect();
+        String SQL="delete from book where num=?"; // ? 파라메터 ->  #{  } -> ?1
+        try{
+            ps=conn.prepareStatement(SQL);
+            ps.setInt(1,  num); //  ? 설정
+            cnt=ps.executeUpdate(); // 실행->성공(1), 실패(0)
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                ps.close();
+                conn.close();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        return cnt; // 1(성공)
     }
 }

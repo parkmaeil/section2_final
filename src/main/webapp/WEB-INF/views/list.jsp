@@ -29,6 +29,7 @@ pageEncoding="UTF-8"%>
                      <th>가격</th>
                      <th>저자</th>
                      <th>페이지수</th>
+                     <th>삭제</th>
                   </tr>
               </thead>
               <tbody>
@@ -39,6 +40,7 @@ pageEncoding="UTF-8"%>
                                        <td>${book.price}</td>
                                        <td>${book.author}</td>
                                        <td>${book.page}</td>
+                                       <td><button class="btn btn-primary btn-sm" onclick="location.href='/section2/remove?num=${book.num}'">삭제</button></td>
                                     </tr>
               </c:forEach>
               </tbody>
