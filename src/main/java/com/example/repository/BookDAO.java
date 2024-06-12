@@ -31,7 +31,7 @@ public class BookDAO {
              ps=conn.prepareStatement(SQL);
              rs=ps.executeQuery();
              while (rs.next()){
-                   Long num=rs.getLong("num");
+                   int num=rs.getInt("num");
                    String title=rs.getString("title");
                    int price=rs.getInt("price");
                   String author=rs.getString("author");
@@ -43,14 +43,6 @@ public class BookDAO {
              }
          }catch (Exception e){
              e.printStackTrace();
-         } finally{
-             try {
-                 rs.close();
-                 ps.close();
-                 conn.close();  // 종류
-             }catch(Exception e){
-                 e.printStackTrace();
-             }
          }
          return list;
     }
@@ -64,13 +56,6 @@ public class BookDAO {
             cnt=ps.executeUpdate(); // 실행->성공(1), 실패(0)
         }catch(Exception e){
             e.printStackTrace();
-        }finally {
-            try {
-                ps.close();
-                conn.close();
-            }catch(Exception e){
-                e.printStackTrace();
-            }
         }
         return cnt; // 1(성공)
     }
