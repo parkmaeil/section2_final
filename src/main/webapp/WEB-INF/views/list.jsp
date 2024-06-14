@@ -13,6 +13,12 @@ pageEncoding="UTF-8"%>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+       function goRegister(){
+         //alert("OK");
+         location.href="/s2_f/registerForm";
+       }
+  </script>
 </head>
 <body>
 
@@ -40,11 +46,12 @@ pageEncoding="UTF-8"%>
                                        <td>${book.price}</td>
                                        <td>${book.author}</td>
                                        <td>${book.page}</td>
-                                       <td><button class="btn btn-primary btn-sm" onclick="location.href='/section2/remove?num=${book.num}'">삭제</button></td>
+                                       <td><button class="btn btn-primary btn-sm" onclick="location.href='/s2_f/remove?num=${book.num}'">삭제</button></td>
                                     </tr>
               </c:forEach>
               </tbody>
           </table>
+          <button class="btn btn-sm btn-primary" onclick="goRegister()">책등록</button>
         </div>
         <div class="card-footer">인프런_마프 1탄_박매일</div>
       </div>

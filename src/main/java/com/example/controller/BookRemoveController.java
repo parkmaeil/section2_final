@@ -28,7 +28,7 @@ public class BookRemoveController extends HttpServlet { // POJO
          int cnt=dao.bookRemove(num); // 삭제
          if(cnt>0){
              // 다시 리스트 페이지로 이동 : redirect
-             resp.sendRedirect("/section2/list");      // URL 경로 -> / (root)
+             resp.sendRedirect("/s2_f/list");      // URL 경로 -> / (root)
          }else{
              throw new ServletException("error"); // 형식적인 코드
          }
