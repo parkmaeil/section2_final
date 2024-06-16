@@ -42,7 +42,7 @@ pageEncoding="UTF-8"%>
               <c:forEach var="book" items="${list}">
                                   <tr>
                                        <td>${book.num}</td>
-                                       <td>${book.title}</a></td>
+                                       <td><a href="/s2_f/bookView?num=${book.num}">${book.title}</a></td>
                                        <td>${book.price}</td>
                                        <td>${book.author}</td>
                                        <td>${book.page}</td>

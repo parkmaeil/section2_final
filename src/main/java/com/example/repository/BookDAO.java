@@ -5,7 +5,7 @@ import com.example.entity.BookDTO;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-public class BookDAO {
+public class BookDAO {  // JDBC -> 생산성이 떨어진다. -> MyBatis ~~~
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
@@ -60,7 +60,32 @@ public class BookDAO {
         return cnt; // 1(성공)
     }
     // 등록 기능 -> 등록기능 만들어서 오기 ? --> 9:30분~3시간 줌
-
-
+    // JavaEE -> Tomcat : 8080(port)<----------Request(요청)---------------client
+    public int bookRegister(BookDTO dto){
+        int cnt = 0;
+        conn=getConnect();
+        String SQL = "INSERT INTO book (title, price, author, page) VALUES (?,?,?,?)";
+        try{
+            ps=conn.prepareStatement(SQL);
+            ps.setString(1,  dto.getTitle()); //  ? 설정
+            ps.setInt(2,  dto.getPrice()); //  ? 설정
+            ps.setString(3,  dto.getAuthor()); //  ? 설정
+            ps.setInt(4,  dto.getPage()); //  ? 설정
+            cnt=ps.executeUpdate(); // 실행->성공(1), 실패(0)
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                if(ps!=null)
+                    ps.close();
+                if(conn!=null)
+                    conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return cnt; // 1(성공)
+    }
+   // bookView(num) 추가
 
 }

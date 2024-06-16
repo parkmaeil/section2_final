@@ -16,7 +16,9 @@ public class BookRegisterSaveController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          // 요청파라메터를 수집(DTO)
-        String title=req.getParameter("title");
+        req.setCharacterEncoding("utf-8"); // 유니코드(ㅈ ㅏ ㅂ ㅏ) -->자바(EUC-KR)
+
+        String title=req.getParameter("title"); // 자바 -> ㅏㅈ  ㅂ ㅏ(61200->16진수 00011101010101)
         int price=Integer.parseInt(req.getParameter("price")); // "10000"->10000
         String author=req.getParameter("author");
         int page=Integer.parseInt(req.getParameter("page")); // "900"->900
@@ -26,7 +28,12 @@ public class BookRegisterSaveController extends HttpServlet {
         dto.setAuthor(author);
         dto.setPage(page);
         BookDAO dao=new BookDAO(); // -> bookRegister(dto)
+        int cnt=dao.bookRegister(dto);
         // 등록이 성공 -> /list
-        resp.sendRedirect("/s2_f/list");
+        if(cnt>0) {
+            resp.sendRedirect("/s2_f/list");
+        }else{
+            throw new ServletException("error");
+        }
     }
 }
