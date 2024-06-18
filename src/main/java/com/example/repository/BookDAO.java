@@ -2,6 +2,7 @@ package com.example.repository;
 // JDBC -> MyBatis(Java<-->SQL) ->Hibernate(ORM) + SQL(X) ->Spring Data JPA(O)
 import com.example.entity.BookDTO;
 
+import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -87,5 +88,34 @@ public class BookDAO {  // JDBC -> 생산성이 떨어진다. -> MyBatis ~~~
         return cnt; // 1(성공)
     }
    // bookView(num) 추가
-
+   public BookDTO bookView(int reqNum){
+         BookDTO dto=null;
+         conn=getConnect();
+         String SQL="select * from book where num=?"; // 미완성된 SQL
+          try{
+           ps=conn.prepareStatement(SQL); // 미리 컴파일
+           ps.setInt(1, reqNum); // select * from book where num=3 -> 완성
+           rs=ps.executeQuery(); // 커서
+           if(rs.next()){
+               int num=rs.getInt("num");
+               String title=rs.getString("title");
+               int price=rs.getInt("price");
+               String author=rs.getString("author");
+               int page=rs.getInt("page");
+               // 묶고(DTO)
+               dto=new BookDTO(num, title, price, author, page);
+           }
+          }catch (Exception e){
+              e.printStackTrace();
+          }finally {
+               try{
+                   if(rs!=null) rs.close();
+                   if(ps!=null) rs.close();
+                   if(conn!=null) rs.close();
+               }catch (Exception e){
+                   e.printStackTrace();
+               }
+          }
+         return dto;  // null or 객체(DTO)
+    }
 }

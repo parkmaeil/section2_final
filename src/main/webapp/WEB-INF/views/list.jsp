@@ -3,6 +3,7 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:set var="cpath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,7 @@ pageEncoding="UTF-8"%>
   <script>
        function goRegister(){
          //alert("OK");
-         location.href="/s2_f/registerForm";
+         location.href="${cpath}/registerForm";
        }
   </script>
 </head>
@@ -42,11 +43,11 @@ pageEncoding="UTF-8"%>
               <c:forEach var="book" items="${list}">
                                   <tr>
                                        <td>${book.num}</td>
-                                       <td><a href="/s2_f/bookView?num=${book.num}">${book.title}</a></td>
+                                       <td><a href="${cpath}/bookView?num=${book.num}">${book.title}</a></td>
                                        <td>${book.price}</td>
                                        <td>${book.author}</td>
                                        <td>${book.page}</td>
-                                       <td><button class="btn btn-primary btn-sm" onclick="location.href='/s2_f/remove?num=${book.num}'">삭제</button></td>
+                                       <td><button class="btn btn-primary btn-sm" onclick="location.href='${cpath}/remove?num=${book.num}'">삭제</button></td>
                                     </tr>
               </c:forEach>
               </tbody>
